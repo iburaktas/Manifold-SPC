@@ -121,3 +121,9 @@ my_cfg.methods = ["LPP","MF"]
 my_runner = Runner(dataloader=my_data_loader, cfg=my_cfg)
 my_runner.run()
 ```
+
+## Citation
+
+If you use this repository in your research, please cite our paper:
+
+ADD BIBTEX HERE.
