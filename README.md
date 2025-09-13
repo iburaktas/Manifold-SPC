@@ -72,7 +72,7 @@ Manifold-SPC/
 │   │   ├── Filters.py                      # Fits AR model
 │   │   ├── functions.py                    # Some functions
 │   │   ├── runner.py                       # EXPERIMENT RUNNER
-│   │   ├── ExperimentConfig.py             # EXPERIMENT CONFIG FOR THE RUNNER
+│   │   ├── experimentconfig.py             # EXPERIMENT CONFIG FOR THE RUNNER
 </pre>
 
 
@@ -96,7 +96,7 @@ python main.py --exp-type SyntheticProcess --exp-name SyntheticProcessRun --N 10
 
 ```python
 from src.utils.data_loader import DataLoader_
-from src.utils.ExperimentConfig import ExperimentConfig
+from src.utils.experimentconfig import ExperimentConfig
 from src.utils.runner import Runner
 
 # create DataLoader_ as in pytorch DataLoader fashion.
