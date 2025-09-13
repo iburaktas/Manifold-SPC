@@ -35,7 +35,7 @@ python setup.py build_ext --inplace
 
 # Project Structure
 
-<pre> ```text
+<pre>
 Manifold-SPC/
 ├── README.md                # Project documentation
 ├── requirements.txt         # Python dependencies
@@ -73,7 +73,7 @@ Manifold-SPC/
 │   │   ├── functions.py                    # Some functions
 │   │   ├── runner.py                       # EXPERIMENT RUNNER
 │   │   ├── ExperimentConfig.py             # EXPERIMENT CONFIG FOR THE RUNNER
-``` </pre>
+</pre>
 
 
 # Usage
