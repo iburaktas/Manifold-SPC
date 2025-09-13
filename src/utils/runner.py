@@ -16,7 +16,7 @@ from src.utils.ControlChart.control_chart import DFUC
 from src.utils.functions import *
 import src.models as models
 from src.utils.Filters import ARFilter
-from src.utils.ExperimentConfig import ExperimentConfig
+from src.utils.experimentconfig import ExperimentConfig
 
 # for name in ["MF", "LPP", "NPE", "PCA"]:
     # cls = getattr(models, name)

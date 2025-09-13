@@ -1,7 +1,8 @@
 import argparse
 from pathlib import Path
 from src.data.dataloader import DataLoader_
-from src.utils.runner import Runner, ExperimentConfig
+from src.utils.runner import Runner
+from src.utils.experimentconfig import ExperimentConfig
 
 
 def make_runner(**kwargs) -> Runner:
