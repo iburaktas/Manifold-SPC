@@ -95,11 +95,12 @@ for batch = 1:NumberofBatches
         indexes = find(setup_batch.RunID == RunIDs(i));
         res = [simOut(1,1).tout,simOut(1,indexes).axmeas, simOut(1,indexes).xmeas, simOut(1,indexes).xmv];
         % Logical mask for columns to keep: 4th row ≠ 5th row
+        % This operation only keeps the continuous variables
         keep_mask = res(4, :) ~= res(5, :);
 
         % Apply the mask to retain only non-equal columns
         res = res(:, keep_mask);
-        res(:, res(4, :) == res(5, :)) = [];
+        % res(:, res(4, :) == res(5, :)) = [];
         amplitude = max(setup_batch.amplitude(indexes));
         rseed =  min(setup_batch.randomSeed(indexes));
         fault =  setup_batch.fault(indexes(1));
@@ -111,7 +112,7 @@ for batch = 1:NumberofBatches
         file_name = strcat(parentDir,"\Data\RunID-",int2str(RunIDs(i)),"-fseed-",int2str(rseed),"-t-",int2str(t),"-ns-",int2str(num_of_sims),"-fault-",int2str(fault), ...
         "-t0-",int2str(t0),"-t1-",int2str(t1),"-amplitude-",num2str(amplitude),"-.csv");
         writematrix(res,file_name)
-        writematrix(double(keep_mask), 'keep_mask.csv');
+        % writematrix(double(keep_mask), 'keep_mask.csv');
     end
 end
 
