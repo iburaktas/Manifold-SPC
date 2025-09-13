@@ -99,7 +99,7 @@ from src.utils.data_loader import DataLoader_
 from src.utils.experimentconfig import ExperimentConfig
 from src.utils.runner import Runner
 
-# create DataLoader_ as in pytorch DataLoader fashion.
+# create your own DataLoader_ as in pytorch DataLoader fashion.
 class MyLoader(DataLoader_):
     def __init__(self, N: int, data: np.ndarray):
         super().__init__()   
