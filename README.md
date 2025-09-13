@@ -33,8 +33,9 @@ cd src/utils/ControlChart
 python setup.py build_ext --inplace
 ```
 
-# Poriject Structure
+# Project Structure
 
+<pre> ```text
 Manifold-SPC/
 ├── README.md                # Project documentation
 ├── requirements.txt         # Python dependencies
@@ -42,16 +43,37 @@ Manifold-SPC/
 ├── main.py                  # For the scaled-down versions of the experiments
 │
 ├── experiments/             # Where the results are written
-│   ├── KolektorRun
-│   ├── SyntheticProcessRun
-│   |   |── MF
-|   |   |── PCA
-|   |   |── NPE
-|   |   |── LPP
-|   |   |── rl_summary.csv  # The results are reported here
-│   └── TERun
+│   ├── KolektorRun/
+│   ├── SyntheticProcessRun/
+│   │   ├── MF
+│   │   ├── PCA
+│   │   ├── NPE
+│   │   ├── LPP
+|   |   ├── rl_summary.csv  # The results are reported here
+│   └── TERun/
 │
-
+├── figures/
+│   ├── Figure_maker.py     # Reproduce most of the figures shown in the paper
+│
+├── src/
+│   ├── data/     # Reproduce most of the figures shown in the paper
+│   │   ├── KolektorSDD/                    # Data for KolektorSDD
+│   │   ├── TennesseeEastmanProcess/        # TE Files
+│   │   │   ├── Data/                       
+│   │   │   ├── TE/                         # TE Simulator
+│   │   │   │   ├──RunSimWithFaults_parallel.m  # Generates TE data from setup.csv file
+│   │   ├── data_loader.py                  # DATA LOADER
+│   ├── models/
+│   │   │   ├── ysl23.py                    # Manifold Fitting Method
+│   │   │   ├── lpp.py                      # LPP
+│   │   │   ├── npe.py                      # NPE
+│   ├── utils/
+│   │   ├── ControlChart/                   # DFUC and DFEWMA control charts
+│   │   ├── Filters.py                      # Fits AR model
+│   │   ├── functions.py                    # Some functions
+│   │   ├── runner.py                       # EXPERIMENT RUNNER
+│   │   ├── ExperimentConfig.py             # EXPERIMENT CONFIG FOR THE RUNNER
+``` </pre>
 
 
 # Usage
@@ -69,4 +91,33 @@ python main.py --exp-type KolektorSDD --exp-name KolektorRun --n-workers 1 --sig
 
 # Synthetic Process
 python main.py --exp-type SyntheticProcess --exp-name SyntheticProcessRun --N 100 --fault-no 4 --amplitude 10
+```
+## Using the Pipeline
+
+```python
+from src.utils.data_loader import DataLoader_
+from src.utils.ExperimentConfig import ExperimentConfig
+from src.utils.runner import Runner
+
+# create DataLoader_ as in pytorch DataLoader fashion.
+class MyLoader(DataLoader_):
+    def __init__(self, N: int, data: np.ndarray):
+        super().__init__()   
+        self.N = N
+        self.data = data
+    def __len__(self):
+        return self.N
+    def get_item(self, idx):
+        return data[idx]
+
+my_data_loader= MyLoader(N,data)
+
+# Next define the experiment config for the Runner, for instance
+my_cfg = ExperimentConfig()
+my_cfg.exp_name = "MyExperiment"
+my_cfg.methods = ["LPP","MF"]
+
+# Now create the runner and let it run
+my_runner = Runner(dataloader=my_data_loader, cfg=my_cfg)
+my_runner.run()
 ```

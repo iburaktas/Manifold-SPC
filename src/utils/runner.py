@@ -16,28 +16,13 @@ from src.utils.ControlChart.control_chart import DFUC
 from src.utils.functions import *
 import src.models as models
 from src.utils.Filters import ARFilter
-
+from src.utils.ExperimentConfig import ExperimentConfig
 
 # for name in ["MF", "LPP", "NPE", "PCA"]:
     # cls = getattr(models, name)
     # print(name, "->", cls) 
 
-class ExperimentConfig:
-    exp_name:str = 'Test'
-    n_manifold: int = 700
-    n_ar : Optional[int] = 400
-    n_cc : int = 100
-    methods : List[str] = ["MF","LPP","NPE","PCA"]
-    alpha: Optional[float] = 0.05
-    ndim : Optional[int] = 1
-    n_neighbors : Optional[int] = 15
-    LPP_weight : Optional[str] = "heat"
-    pickle_path : Optional[Path] = None
-    sigma: Optional[float] = 0.05
-    estimate_sig: Optional[bool] = True
-    p: Optional[int] = 20
-    mf_constants: Optional[List[float]] = [3.0,2.0,4.0]
-    d: Optional[int] = None
+
 
 
 class Runner:
