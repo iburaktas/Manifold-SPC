@@ -56,7 +56,7 @@ Manifold-SPC/
 │   ├── Figure_maker.py     # Reproduce most of the figures shown in the paper
 │
 ├── src/
-│   ├── data/     # Reproduce most of the figures shown in the paper
+│   ├── data/     
 │   │   ├── KolektorSDD/                    # Data for KolektorSDD
 │   │   ├── TennesseeEastmanProcess/        # TE Files
 │   │   │   ├── Data/                       
@@ -83,14 +83,14 @@ Manifold-SPC/
 We provide example commands to reproduce simplified versions of the experiments from the paper:
 
 ```bash
-# Tennessee Eastman Process (TEP)
+# Tennessee Eastman Process
 python main.py --exp-type TE --exp-name TERun --N 10 --fault-no 4 --amplitude 0.1 --n-workers 8
 
 # KolektorSDD
 python main.py --exp-type KolektorSDD --exp-name KolektorRun --n-workers 1 --sigma-estimate 0 --alpha 0.005
 
 # Synthetic Process
-python main.py --exp-type SyntheticProcess --exp-name SyntheticProcessRun --N 100 --fault-no 4 --amplitude 10
+python main.py --exp-type SyntheticProcess --exp-name SyntheticProcessRun --N 100 --fault-no 4 --amplitude 10 --n-workers 8
 ```
 ## Using the Pipeline
 
