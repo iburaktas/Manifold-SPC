@@ -99,7 +99,8 @@ from src.utils.data_loader import DataLoader_
 from src.utils.experimentconfig import ExperimentConfig
 from src.utils.runner import Runner
 
-# create your own DataLoader_ as in pytorch DataLoader fashion.
+# Create your own DataLoader_ as in pytorch DataLoader fashion.
+
 class MyLoader(DataLoader_):
     def __init__(self, N: int, data: np.ndarray):
         super().__init__()   
@@ -108,16 +109,16 @@ class MyLoader(DataLoader_):
     def __len__(self):
         return self.N
     def get_item(self, idx):
-        return data[idx]
+        return self.data[idx]
 
 my_data_loader= MyLoader(N,data)
 
-# Next define the experiment config for the Runner, for instance
+# Next define an experiment config for Runner, for instance
 my_cfg = ExperimentConfig()
 my_cfg.exp_name = "MyExperiment"
 my_cfg.methods = ["LPP","MF"]
 
-# Now create the runner and let it run
+# Now make Runner and let it run
 my_runner = Runner(dataloader=my_data_loader, cfg=my_cfg)
 my_runner.run()
 ```
