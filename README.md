@@ -26,7 +26,7 @@ git clone https://github.com/iburaktas/Manifold-SPC.git
 cd Manifold-SPC
 pip install -r requirements.txt
 ```
-The control charts DFEWMA and DFUC are implemented in C++ via pybind11 and must be compiled before use.
+The control charts DFEWMA and UDFM are implemented in C++ via pybind11 and must be compiled before use.
 
 ```bash
 cd src/utils/ControlChart
@@ -68,7 +68,7 @@ Manifold-SPC/
 │   │   │   ├── lpp.py                      # LPP
 │   │   │   ├── npe.py                      # NPE
 │   ├── utils/
-│   │   ├── ControlChart/                   # DFUC and DFEWMA control charts
+│   │   ├── ControlChart/                   # UDFM and DFEWMA control charts
 │   │   ├── Filters.py                      # Fits AR model
 │   │   ├── functions.py                    # Some functions
 │   │   ├── runner.py                       # EXPERIMENT RUNNER

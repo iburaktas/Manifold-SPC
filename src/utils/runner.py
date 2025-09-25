@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor, as_completed
 from pathlib import Path
 from src.utils.ControlChart.control_chart import DFEWMA
-from src.utils.ControlChart.control_chart import DFUC
+from src.utils.ControlChart.control_chart import UDFM
 from src.utils.functions import *
 import src.models as models
 from src.utils.Filters import ARFilter
@@ -114,7 +114,7 @@ class Runner:
             ar_model = ar_models_dict[model_name]
             if model_name == "MF":
                 cc_data_ = ar_model.predict_errors(manifold_model.deviations(cc_data))[ar_model.max_p:]
-                cc = DFUC(IC_data=cc_data_,alpha=self.cfg.alpha)
+                cc = UDFM(IC_data=cc_data_,alpha=self.cfg.alpha)
             else:
                 cc_data_ = ar_model.predict_errors(manifold_model.transform(cc_data))[ar_model.max_p:]
                 cc = DFEWMA(IC_data=cc_data_,alpha=self.cfg.alpha)
@@ -140,7 +140,7 @@ class Runner:
             #print(iter)
         return cc_dict
 
-    def writer_(self,idx:int,res: dict[Union[DFEWMA, DFUC]]):
+    def writer_(self,idx:int,res: dict[Union[DFEWMA, UDFM]]):
         for method in self.cfg.methods:
             directory = self.dirs[method]
             cc = res[method]

@@ -143,7 +143,7 @@ class DFEWMA:
         return np.argmax(T_v)
     
 
-class DFUC:
+class UDFM:
     def __init__(self, IC_data,  kmax=1000, alpha=0.05, minwin=5, maxwin=10, nbound=10000, lambda_val=0.05,change_point_est = False):
         # Parameters
         self.kmax, self.m0, self.alpha = kmax, IC_data.shape[0], alpha  # # of Phase II data # # of Phase I data # False Alarm Rate
