@@ -2,7 +2,7 @@
 
 This repository contains the code and experiments for the paper:
 
-[**High-Dimensional Statistical Process Control via Manifold Fitting and Learning**](https://arxiv.org/abs/xxxx.xxxxx)
+[**High-Dimensional Statistical Process Control via Manifold Fitting and Learning**](https://arxiv.org/abs/2509.19820)
 
 
 
