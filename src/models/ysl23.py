@@ -16,12 +16,16 @@ class YSL23:
     ----------
     data : np.ndarray, shape (N, D)
         Reference point cloud (the manifold samples). The KD-tree is built on this.
-    k : int, default=5
-        Minimum neighbor count for the initial Euclidean ball (also used for `query`).
     c0, c1, c2 : float
         Fixed constants controlling the radii r0, r1, r2.
     sigma : Optional[float]
         Known noise level. If not provided, it can be estimated with estimate_sigma function.
+    estimate_sig : Optional[bool]
+        If True, sigma will be estimated.
+    d : Optional[int] = None
+        Intrinsic dimensionality used for sigma estimation. If None, it will be set to 0
+    k : int, default=5
+        Minimum neighbor count for the initial Euclidean ball (also used for `query`).
     """
 
     data: np.ndarray
@@ -126,7 +130,7 @@ class YSL23:
             verbose = self.verbose
 
         N, D = self.N, self.D
-        # print("Sigma Estimate- Remove this line")
+        # print("check")
         denom = (D - self.d) * N
         sig = sigma_init
 
@@ -231,14 +235,8 @@ class YSL23:
         sigma_init: Optional[float] = None,
         verbose: bool = False,
         ) -> Tuple[np.ndarray, float]:
-        """Project given points onto the manifold.
-        Parameters:
-        ----------
-        points: np.ndarray, shape (m, D)
-        Returns:
-        ----------
-        Mout : np.ndarray, shape (m, D), Projected points.
-        avg_cnbr : float, Average count of neighbors used per point projection. 
+        """
+        Returns deviations only
         """
         if not isinstance(points, np.ndarray):
             points = np.asarray(points, dtype=float)

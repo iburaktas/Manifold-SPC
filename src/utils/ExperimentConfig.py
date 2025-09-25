@@ -2,6 +2,10 @@ import sys
 from pathlib import Path
 from typing import Iterable, Callable, Any, Optional, Literal, Dict, List,  Union
 
+"""
+Config for experiments
+"""
+
 class ExperimentConfig:
     exp_name:str = 'Test'
     n_manifold: int = 700

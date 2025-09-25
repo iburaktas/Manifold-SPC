@@ -49,6 +49,9 @@ def parse_filename(file):
 
 
 def JobAssigner(n,fault_list,amplitude_list,data_path,experiment_path,start_idx=0,ns=10,pc_n=1,randomness=False,exp_seed=1):
+    """
+    This code has ben depreciated.
+    """
     random.seed(exp_seed)
     job_file_path = os.path.join(experiment_path,"jobs.csv") 
     # print(fault_no)
@@ -102,7 +105,7 @@ def JobAssigner(n,fault_list,amplitude_list,data_path,experiment_path,start_idx=
         for cond in conditions
     }
 
-    # Track indexes used for each condition separately
+    
     condition_cursors = {cond: 0 for cond in conditions}
     ic_cursor = 0
 
@@ -119,7 +122,7 @@ def JobAssigner(n,fault_list,amplitude_list,data_path,experiment_path,start_idx=
             file_path = group.iloc[cursor]["path"]
             job_faulty_files.append(file_path)
 
-            condition_cursors[cond] += 1  # Advance cursor for this condition
+            condition_cursors[cond] += 1  
 
         # Fill with IC files
         ic_needed = ns - len(job_faulty_files)
@@ -196,7 +199,7 @@ def generate_stochastic_process_on_sphere(n, sigma=0.3, d=3, r=1, seed=None, set
     return data
 
 
-
+"""Codes below are used to create figures."""
 
 def threeD_plot_on_sphere(data,figure_path,n_to_plot=100,save=True):
     fig = plt.figure(figsize=(8, 6))
@@ -244,9 +247,9 @@ def KS_test_QQ_plot(data,figure_path,sigma,df,plot_title="Q-Q Plot vs. Scaled Ch
     D, p_value = kstest(scaled_data, 'chi', args=(df,))
     print(f"K-S test statistic: {D:.4f}, p-value: {p_value:.4f}")
     if p_value < 0.05:
-        print("Reject null: data does NOT follow scaled Chi distribution")
+        print("Reject null: data does not follow scaled Chi distribution")
     else:
-        print("Cannot reject null: data MAY follow scaled Chi distribution")
+        print("Cannot reject null: data may follow scaled Chi distribution")
 
 def estimated_ACF_plot(data,figure_path,fig_title):
     fig, ax = plt.subplots(figsize=(8, 4))

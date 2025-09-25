@@ -164,9 +164,10 @@ class Runner:
                 self.writer_(idx=idx,res=results)
         else:
             max_workers = self.n_workers or max(1, (os.cpu_count() or 1))
+            # We set below to 1 to to force single thread mode per process
             os.environ["OMP_NUM_THREADS"] = "1"
             os.environ["MKL_NUM_THREADS"] = "1"
-            # IMPORTANT on Windows: call this under if __name__ == "__main__"
+            # call this under if __name__ == "__main__" if your operating system is Windows
             with ProcessPoolExecutor(max_workers=max_workers) as ex:
                 futures = [ex.submit(self.process, idx, data)
                         for idx, data in enumerate(self.dataloader)]

@@ -1,3 +1,7 @@
+"""This is a Python code for Chen's control chart and the univariate dfistribution control chart. The control charts run sequentially.
+Make sure you compile the C+ code before running this.
+C+ code for DFEWMA is taken from Chen's control chart (https://www.tandfonline.com/doi/abs/10.1080/00401706.2015.1049750)"""
+
 import numpy as np
 from scipy.stats import rankdata
 import os
@@ -11,7 +15,6 @@ sys.path.append(current_dir)
 
 import permutation_test
 
-# This is a Python code for Chen's control chart. The control chart runs sequentially.
 
 class DFEWMA:
     def __init__(self, IC_data,  kmax=1000, alpha=0.05, minwin=5, maxwin=10, nbound=10000, lambda_val=0.05,change_point_est = False):

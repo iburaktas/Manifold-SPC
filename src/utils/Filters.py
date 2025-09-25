@@ -50,7 +50,7 @@ class ARFilter:
 
             
     def get_residuals(self):
-        """Returns the residuals of the fitted AR models."""
+        """Returns the residuals, not the forecast residuals."""
         return self.residuals
 
     def get_noise_std(self):

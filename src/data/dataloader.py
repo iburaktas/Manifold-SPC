@@ -1,4 +1,4 @@
-# Loads Data for TennesseeEastman and KolektorSDD Experiments
+# Loads Data for TennesseeEastman and KolektorSDD Experiments, also generates data for a stochastic process on a shpere
 
 from __future__ import annotations
 from dataclasses import dataclass
