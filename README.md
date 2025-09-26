@@ -127,4 +127,14 @@ my_runner.run()
 
 If you use this repository in your research, please cite our paper:
 
-ADD BIBTEX HERE.
+```bibtex
+@misc{tas2025manifold,
+      title={High-Dimensional Statistical Process Control via Manifold Fitting and Learning}, 
+      author={Burak I. Tas and Enrique del Castillo},
+      year={2025},
+      eprint={2509.19820},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML},
+      url={https://arxiv.org/abs/2509.19820}, 
+}
+```
